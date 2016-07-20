@@ -31,15 +31,19 @@ apt-get update && \
 	echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
 	apt-get install -y "${TO_INSTALL[@]}";
 
+# Move all scripts into scripts folder in home directory
+mkdir ~/scripts
+cp /scripts/* ~/scripts/.
+rm ~/scripts/install.sh
+
 # Initial setup of .bashrc
 echo bashrc >> ~/.bashrc;
+echo >> ~/.bashrc;
 
 # Source all scripts
-for i in ( \
-  FILES_FILES_FILES \
- );
+for i in $( ls . );
 do
-	echo $i >> ~/.bashrc;
+	echo "source ~/scripts/$i" >> ~/.bashrc;
 	printf "Added to .bashrc: %s\n" $i;
 done;
 
