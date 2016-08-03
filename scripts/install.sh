@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Basic requirements
-TO_INSTALL_BASIC=(apt-transport-https software-properties-common wget vim curl);
+TO_INSTALL_BASIC=(apt-transport-https software-properties-common wget vim curl unzip);
 
 echo "LOGGING: Installing basic tools (${TO_INSTALL_BASIC[@]})...";
 apt-get update && apt-get install -y "${TO_INSTALL_BASIC[@]}";
@@ -36,7 +36,7 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886;
 echo "LOGGING: Adding Spotify ppa... complete";
 
 # More advanced requirements
-TO_INSTALL=(cowsay fortune git terminator vlc python3 maven awscli apache2 google-chrome-stable oracle-java8-installer docker atom spotify-client shellcheck);
+TO_INSTALL=(cowsay fortune git terminator vlc python3 maven apache2 google-chrome-stable oracle-java8-installer docker atom spotify-client shellcheck);
 
 # Automatically accept the Oracle Java License Agreement
 echo "LOGGING: Adding Oracle license acceptance to debconf...";
@@ -48,6 +48,13 @@ echo "LOGGING: Installing tools (${TO_INSTALL[@]})...";
 apt-get update && \
 	apt-get install -y "${TO_INSTALL[@]}";
 echo "LOGGING: Installing tools (${TO_INSTALL[@]})... complete";
+
+# Manually download and install AWS CLI (apt repository can be out of date, so this is the recommended way)
+echo "LOGGING: Installing AWS CLI manually by downloading bundle...";
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
+	unzip awscli-bundle.zip && \
+	./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws;
+echo "LOGGING: Installing AWS CLI manually by downloading bundle... complete";
 
 # Move all scripts into scripts folder in home directory
 echo "LOGGING: Creating ~/scripts and importing scripts...";
