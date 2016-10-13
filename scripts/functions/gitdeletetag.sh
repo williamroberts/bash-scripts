@@ -76,6 +76,6 @@ function __gitdeletetag__process() {
         return 1;;
     esac;
   fi;
-  $3
+  git --git-dir="$__gitdeletetag_DIRECTORY/.git" tag -d "$__gitdeletetag_TAG";
   echo "Tag removed: $__gitdeletetag_TAG";
 }

@@ -6,4 +6,4 @@ RUN mkdir /scripts
 COPY ./scripts /scripts
 WORKDIR /scripts
 
-CMD bash install.sh
+RUN bash install.sh

@@ -12,6 +12,6 @@ function gitage() {
 
   for ref in $(git for-each-ref --sort=-committerdate --format="%(refname)" refs/remotes/ );
   do
-      git log -n1 $ref --pretty=format:"%Cgreen%cr%Creset %C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n" | cat;
+      git log -n1 "$ref" --pretty=format:"%Cgreen%cr%Creset %C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n" | cat;
   done;
 }

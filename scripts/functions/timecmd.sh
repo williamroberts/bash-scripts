@@ -18,7 +18,7 @@ function timecmd() {
 }
 
 function __timecmd__validateArgs() {
-  __timecmd_ARGS="$@"
+  __timecmd_ARGS="$*"
   if [ -z "$__timecmd_ARGS" ];
   then
     echo "ERROR: No command found";

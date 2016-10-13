@@ -2,7 +2,7 @@
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)";
+    test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")" || eval "$(dircolors -b)";
     alias ls='ls --color=auto';
     alias dir='dir --color=auto';
     alias vdir='vdir --color=auto';
@@ -16,8 +16,8 @@ fi;
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"';
 
 # Misc aliases
-alias src='source ~/.bashrc';
-alias edbash='vi ~/.bashrc';
+alias src='source "$HOME"/.bashrc';
+alias edbash='vi "$HOME"/.bashrc';
 
 # Git aliases
 alias gitagef='SAVEIFS=$IFS; IFS=$(echo -en "\n\b"); for i in $(find . -type f -not -path "**/.git/*"); do echo "$(git log -1 --format="%ci" $i) $i"; done | sort -n; IFS=$SAVEIFS'
@@ -29,4 +29,5 @@ alias dockthis='sudo docker build -t img-${PWD##*/} . && sudo docker run -d --na
 alias undockthis='sudo docker rm -f con-${PWD##*/} && sudo docker rmi img-${PWD##*/}';
 
 # Date aliases
-alias howlong="echo "$(( ($(date +%s) - $(date --date="140727" +%s) )/(60*60*24) ))""
+alias howlong='echo "$(( ($(date +%s) - $(date --date="140727" +%s) )/(60*60*24) ))"';
+alias howlongw='echo "$(( ($(date +%s) - $(date --date="140727" +%s) )/(60*60*24)/7 ))"';

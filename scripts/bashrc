@@ -66,3 +66,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Add /usr/games to PATH if it's not already there
+[[ ":$PATH:" =~ ":/usr/games:" ]] || PATH="$PATH:/usr/games"
+ 
