@@ -60,4 +60,10 @@ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 	rm -rf ./awscli-bundle;
 echo "LOGGING: Installing AWS CLI manually by downloading bundle... complete";
 
+# Install NodeJS in the way recommended on the Node website
+echo "LOGGING: Installing NodeJS manually as recommended on the Node website...";
+curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+	apt-get install -y nodejs;
+echo "LOGGING: Installing NodeJS manually as recommended on the Node website... complete";
+
 echo "LOGGING: install_tools.sh script complete"
